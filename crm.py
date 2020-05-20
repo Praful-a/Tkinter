@@ -1,6 +1,7 @@
 from tkinter import *
 from PIL import ImageTk, Image
 import pymysql
+import csv
 
 root = Tk()
 root.title('Learn To Code!')
@@ -71,6 +72,15 @@ def add_customer():
     mydb.commit()
     clear_fields()
 
+
+# Write to CSV Excel Function
+def write_to_csv(result):
+    with open('customers.csv', 'a') as f:
+        w = csv.writer(f, dialect='excel')
+        for record in result:
+            w.writerow(record)
+
+
 # List customers
 
 
@@ -89,6 +99,9 @@ def list_customer():
             lookup_label = Label(list_customer_query, text=y)
             lookup_label.grid(row=index, column=num)
             num += 1
+    csv_button = Button(list_customer_query, text="Save to Excel",
+                        command=lambda: write_to_csv(result))
+    csv_button.grid(row=index+1, column=1)
 
 
 # create a Label
