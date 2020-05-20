@@ -71,6 +71,25 @@ def add_customer():
     mydb.commit()
     clear_fields()
 
+# List customers
+
+
+def list_customer():
+    list_customer_query = Tk()
+    list_customer_query.title('List All Customers')
+    list_customer_query.iconbitmap('favicon.ico')
+    list_customer_query.geometry("800x600")
+    # Query The Database
+    my_cursor.execute("SELECT * FROM customers")
+    result = my_cursor.fetchall()
+
+    for index, x in enumerate(result):
+        num = 0
+        for y in x:
+            lookup_label = Label(list_customer_query, text=y)
+            lookup_label.grid(row=index, column=num)
+            num += 1
+
 
 # create a Label
 title_label = Label(root, text="Codemy Customer Database", font=("Helvetica", 16))
@@ -119,6 +138,10 @@ price_paid_box.grid(row=14, column=1, pady=5)
 # Create Button
 add_customer_button = Button(root, text="Add Customer To Database", command=add_customer)
 add_customer_button.grid(row=15, column=1, padx=10, pady=10)
+# List Customers Button
+list_customers_button = Button(root, text="List Customer", command=list_customer)
+list_customers_button.grid(row=15, column=0, sticky=W, padx=10)
+
 clear_fields_button = Button(root, text="Clear Fields", command=clear_fields)
 clear_fields_button.grid(row=16, column=1)
 
