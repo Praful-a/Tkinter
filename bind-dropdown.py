@@ -12,7 +12,8 @@ def selected(event):
 
 
 def comboclick(event):
-    myLabel = Label(root, text=myCombo.get()).pack()
+    message = "Hey It's " + myCombo.get()
+    myLabel = Label(root, text=message).pack()
 
 
 options = [
