@@ -1,11 +1,12 @@
 from tkinter import *
 from PIL import ImageTk, Image
 from random import randint
+import random
 
 root = Tk()
 root.title("Learn To Code!")
 root.iconbitmap(r'C:\Users\Praful\Desktop\Tkinter\Tkinter\favicon.ico')
-root.geometry("500x600")
+root.geometry("500x650")
 
 
 def random_state():
@@ -26,6 +27,14 @@ def random_state():
     show_state.config(image=state_img)
     # show_state = Label(state_frame, image=state_img)
     # show_state.pack(pady=15)
+# create state capital answer
+def state_capital_answer():
+    if capital_radio.get() == our_state_capitals[answer]:
+        response = "Correct! " + our_state_capitals[answer].title() + " is the capital of " + answer.title()
+    else:
+        response = "Incorrect! " + our_state_capitals[answer].title() + " is the capital of " + answer.title()
+
+    answer_label_capitals.config(text=response)
 
 # Create answer function
 
@@ -98,7 +107,80 @@ def state_capitals():
     # hide previous frames
     hide_all_frames()
     state_capitals_frame.pack(fill="both", expand=1)
-    my_label = Label(state_capitals_frame, text="Capitals").pack()
+    # my_label = Label(state_capitals_frame, text="Capitals").pack()
+
+    global show_state
+    show_state = Label(state_capitals_frame)
+    show_state.pack(pady=15)
+
+    global our_states
+    our_states = ['brazil', 'colombia', 'indonesia', 'philippines',
+                  'romania', 'saudi', 'taiwan', 'thailand', 'united-arab', 'vietnam']
+    global our_state_capitals
+    our_state_capitals = {
+        'brazil': 'brasilia',
+        'colombia': 'bogota',
+        'indonesia': 'jakarta',
+        'philippines': 'manila',
+        'romania': 'bucharest',
+        'saudi': 'riyadh',
+        'taiwan': 'taipei',
+        'thailand': 'bangkok',
+        'united-arab': 'abu-dhabi',
+        'vietnam': 'hanoi',
+    }
+
+    # Create empty answer list and counter
+    answer_list = []
+    count = 1
+    global answer
+
+    # Generate our three random capitals
+    while count < 4:
+        rando = randint(0, len(our_states)-1)
+
+        if count == 1:
+            answer = our_states[rando]
+            state = 'Images/' + our_states[rando] + ".jpg"
+            global state_img
+            state_img = ImageTk.PhotoImage(Image.open(state))
+            show_state.config(image=state_img)
+
+        # Add our first selection to a new list
+        answer_list.append(our_states[rando])
+
+        # Remove from old list
+        our_states.remove(our_states[rando])
+
+        # Shuffle original list
+        random.shuffle(our_states)
+        count += 1
+
+    random.shuffle(answer_list)
+
+    global capital_radio
+    capital_radio = StringVar()
+    capital_radio.set(our_state_capitals[answer_list[0]])
+
+    capital_radio_button1 = Radiobutton(
+        state_capitals_frame, text=our_state_capitals[answer_list[0]].title(), variable=capital_radio, value=our_state_capitals[answer_list[0]]).pack()
+    capital_radio_button2 = Radiobutton(
+        state_capitals_frame, text=our_state_capitals[answer_list[1]].title(), variable=capital_radio, value=our_state_capitals[answer_list[1]]).pack()
+    capital_radio_button3 = Radiobutton(
+        state_capitals_frame, text=our_state_capitals[answer_list[2]].title(), variable=capital_radio, value=our_state_capitals[answer_list[2]]).pack()
+
+    # Add a pass Button
+    pass_button = Button(state_capitals_frame, text="Pass", command=state_capitals)
+    pass_button.pack(pady=15)
+
+    # Create a button to answer
+    capital_answer_button = Button(state_capitals_frame, text="Answer", command=state_capital_answer)
+    capital_answer_button.pack(pady=10)
+
+    # Create an answer label
+    global answer_label_capitals
+    answer_label_capitals = Label(state_capitals_frame, text="", font=("Helvetica", 18))
+    answer_label_capitals.pack(pady=15)
 
 # Hide all previous Frames
 
