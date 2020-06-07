@@ -1,7 +1,7 @@
 from tkinter import *
 
 root = Tk()
-root.title('Validate An Entry Box')
+root.title('Canvas')
 root.iconbitmap('favicon.ico')
 root.geometry("400x400")
 
