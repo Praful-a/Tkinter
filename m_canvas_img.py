@@ -19,31 +19,22 @@ image = Image.open('cur.png')
 new_image = image.resize((30, 70))
 img = ImageTk.PhotoImage(new_image)
 
-my_image = my_canvas.create_image(0, 0, anchor=NW, image=img)
+def move(e):
+    # e.x
+    # e.y
+    global new_image, image, img
+    image = Image.open('cur.png')
+    new_image = image.resize((30, 70))
+    img = ImageTk.PhotoImage(new_image)
+    my_image = my_canvas.create_image(e.x, e.y, anchor=NW, image=img)
+    my_label.config(text="Coordinates: x: " + str(e.x) + " y: " + str(e.y))
 
-def left(event):
-    x = -10
-    y = 0
-    my_canvas.move(my_image, x, y)
+my_label = Label(root, text="")
+my_label.pack(pady=20)
 
-def right(event):
-    x = 10
-    y = 0
-    my_canvas.move(my_image, x, y)
+# moving mouse by holding left button
+# my_canvas.bind('<B1-Motion>', move)
+my_canvas.bind('<Motion>', move)
 
-def up(event):
-    x = 0
-    y = -10
-    my_canvas.move(my_image, x, y)
-
-def down(event):
-    x = 0
-    y = 10
-    my_canvas.move(my_image, x, y)
-
-root.bind("<Left>", left)
-root.bind("<Right>", right)
-root.bind("<Up>", up)
-root.bind("<Down>", down)
 
 root.mainloop()
