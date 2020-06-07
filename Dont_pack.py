@@ -1,7 +1,7 @@
 from tkinter import *
 
 root = Tk()
-root.title('Move objects by Aerow key')
+root.title('what heppend if you use .pack in same line')
 root.iconbitmap('favicon.ico')
 root.geometry("600x400")
 
