@@ -2,7 +2,7 @@ from tkinter import *
 from PIL import ImageTk, Image
 
 root = Tk()
-root.title('Open External file.')
+root.title('Image Animation')
 root.iconbitmap('favicon.ico')
 root.geometry("600x600")
 

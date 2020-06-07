@@ -1,7 +1,7 @@
 from tkinter import *
 
 root = Tk()
-root.title('Move objects by Aerow key')
+root.title('Moving Canvas')
 root.iconbitmap('favicon.ico')
 root.geometry("800x600")
 
@@ -43,7 +43,7 @@ def pressing(event):
     if event.char == "r": y = -10
     if event.char == "x": y = 10
     my_canvas.move(my_circle, x, y)
-    
+
 root.bind("<Key>", pressing)
 
 root.bind("<Left>", left)

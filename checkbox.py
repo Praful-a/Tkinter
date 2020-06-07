@@ -2,7 +2,7 @@ from tkinter import *
 from PIL import ImageTk, Image
 
 root = Tk()
-root.title('Learn To Code at Codemy.com')
+root.title('Learn To Code')
 root.iconbitmap('favicon.ico')
 root.geometry("400x400")
 

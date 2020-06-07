@@ -2,7 +2,7 @@ from tkinter import *
 from PIL import Image, ImageTk
 
 root = Tk()
-root.title('Move objects by Aerow key')
+root.title('Move images')
 root.iconbitmap('favicon.ico')
 root.geometry("800x600")
 

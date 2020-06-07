@@ -2,7 +2,7 @@ from tkinter import *
 from tkcalendar import *
 
 root = Tk()
-root.title('Move objects by Aerow key')
+root.title('Calendar')
 root.iconbitmap('favicon.ico')
 root.geometry("600x400")
 

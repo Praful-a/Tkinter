@@ -2,7 +2,7 @@ from tkinter import *
 import pyttsx3
 
 root = Tk()
-root.title('Open External file.')
+root.title('Text To Speech')
 root.iconbitmap('favicon.ico')
 root.geometry("600x600")
 

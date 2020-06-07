@@ -3,7 +3,7 @@ from PIL import ImageTk, Image
 from tkinter import messagebox
 
 root = Tk()
-root.title('Learn To Code at Codemy.com')
+root.title('Learn To Code')
 root.iconbitmap('favicon.ico')
 
 # showinfo, showwaning, showerror, askquestion, askokcancel, askyesno

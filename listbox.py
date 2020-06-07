@@ -1,7 +1,7 @@
 from tkinter import *
 
 root = Tk()
-root.title('Codemy.com')
+root.title('ListBoxes')
 root.iconbitmap('favicon.ico')
 root.geometry("400x600")
 

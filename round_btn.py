@@ -2,7 +2,7 @@ from tkinter import *
 from PIL import Image, ImageTk
 
 root = Tk()
-root.title("Entry Boxes")
+root.title("Rounded Button")
 root.iconbitmap('favicon.ico')
 root.geometry("400x400")
 
